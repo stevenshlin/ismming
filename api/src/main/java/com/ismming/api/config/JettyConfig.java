@@ -1,6 +1,6 @@
 package com.ismming.api.config;
 
-import com.ismming.api.main.Launcher;
+import com.ismming.api.main.Application;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.eclipse.jetty.xml.XmlConfiguration;
@@ -24,6 +24,6 @@ public class JettyConfig implements JettyServerCustomizer {
     }
 
     private XmlConfiguration createConfiguration(String xml) throws IOException, SAXException {
-        return new XmlConfiguration(Launcher.class.getResourceAsStream(xml));
+        return new XmlConfiguration(Application.class.getResourceAsStream(xml));
     }
 }
