@@ -1,6 +1,8 @@
 package com.ismming.api.resource;
 
+import com.ismming.api.service.CategoryService;
 import com.ismming.api.util.ResponseBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +17,13 @@ import javax.ws.rs.core.Response;
 @Path("/")
 public class CategoryResource {
 
+    @Autowired
+    private CategoryService categoryService;
+
     @GET
     @Path("category")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCategories() throws Exception {
-        return ResponseBuilder.ok("level_1", "men");
+        return ResponseBuilder.ok(categoryService.getCategories());
     }
 }

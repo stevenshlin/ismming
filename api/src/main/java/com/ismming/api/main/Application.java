@@ -2,15 +2,14 @@ package com.ismming.api.main;
 
 import com.ismming.api.config.JerseyConfig;
 import com.ismming.api.config.JettyConfig;
-import org.eclipse.jetty.server.Server;
 import org.glassfish.jersey.servlet.ServletContainer;
 import org.glassfish.jersey.servlet.ServletProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
-import org.springframework.boot.context.embedded.jetty.JettyEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.jetty.JettyEmbeddedServletContainerFactory;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
@@ -33,20 +32,19 @@ public class Application extends SpringBootServletInitializer {
 
     @Bean
     public ServletRegistrationBean jerseyServlet() {
-        ServletRegistrationBean registration = new ServletRegistrationBean(new ServletContainer(), "/api/*");
+        final ServletRegistrationBean registration = new ServletRegistrationBean(new ServletContainer(), "/api/*");
         registration.addInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, JerseyConfig.class.getName());
         return registration;
     }
 
     @Bean
-    public EmbeddedServletContainerFactory containerFactory() {
-        final JettyEmbeddedServletContainerFactory jettyEmbeddedServletContainerFactory = new JettyEmbeddedServletContainerFactory() {
-            @Override
-            protected JettyEmbeddedServletContainer getJettyEmbeddedServletContainer(Server server) {
-                return new JettyEmbeddedServletContainer(server);
-            }
-        };
-        jettyEmbeddedServletContainerFactory.addServerCustomizers(new JettyConfig());
-        return jettyEmbeddedServletContainerFactory;
+    public EmbeddedServletContainerFactory containerFactory(
+            @Value("${server.port:8080}") final String port,
+            @Value("${jetty.threadPool.maxThreads:200}") final String maxThreads,
+            @Value("${jetty.threadPool.minThreads:8}") final String minThreads,
+            @Value("${jetty.threadPool.idleTimeout:60000}") final String idleTimeout) {
+        final JettyEmbeddedServletContainerFactory factory = new JettyEmbeddedServletContainerFactory(Integer.valueOf(port));
+        factory.addServerCustomizers(new JettyConfig(maxThreads, minThreads, idleTimeout));
+        return factory;
     }
 }

@@ -1,29 +1,27 @@
 package com.ismming.api.config;
 
-import com.ismming.api.main.Application;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.webapp.WebAppContext;
-import org.eclipse.jetty.xml.XmlConfiguration;
+import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.springframework.boot.context.embedded.jetty.JettyServerCustomizer;
-import org.xml.sax.SAXException;
-
-import java.io.IOException;
 
 public class JettyConfig implements JettyServerCustomizer {
 
-    @Override
-    public void customize(Server server) {
-        WebAppContext webAppContext = (WebAppContext) server.getHandler();
-        try {
-            // Load configuration from resource file (standard Jetty xml configuration) and configure the context.
-            createConfiguration("/jetty.xml").configure(webAppContext);
-            createConfiguration("/jetty-rewrite.xml").configure(server);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    private String maxThreads;
+    private String minThreads;
+    private String idleTimeout;
+
+    public JettyConfig(String maxThreads, String minThreads, String idleTimeout) {
+        this.maxThreads = maxThreads;
+        this.minThreads = minThreads;
+        this.idleTimeout = idleTimeout;
     }
 
-    private XmlConfiguration createConfiguration(String xml) throws IOException, SAXException {
-        return new XmlConfiguration(Application.class.getResourceAsStream(xml));
+    @Override
+    public void customize(final Server server) {
+        final QueuedThreadPool threadPool = server.getBean(QueuedThreadPool.class);
+        threadPool.setMaxThreads(Integer.valueOf(maxThreads));
+        threadPool.setMinThreads(Integer.valueOf(minThreads));
+        threadPool.setIdleTimeout(Integer.valueOf(idleTimeout));
     }
+
 }
