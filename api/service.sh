@@ -1,25 +1,14 @@
 #!/usr/bin/env bash
 
+BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/
+
 function start_jetty(){
-    check_jetty_out_file_exist
-    if [ $? -eq 0 ]; then
-        nohup java -jar target/api.jar > target/jetty.out 2>&1 &
-    fi
+    java -jar target/api.jar &
+    echo $! > $BASE_DIR/target/jetty.pid
 }
 
 function stop_jetty(){
-    curl -X POST http://localhost:9090/shutdown
-}
-
-function check_jetty_out_file_exist(){
-    file="target/jetty.out"
-    if [ -f "$file" ]
-    then
-        echo "$file found."
-    else
-        echo "$file not found. Create a new one."
-        touch "$file"
-    fi
+    kill -9 $(cat $BASE_DIR/target/jetty.pid)
 }
 
 function install_app(){
