@@ -27,6 +27,7 @@ buildNumber.properties
 
 # IntelliJ project files
 **/.idea/
+**/out/
 *.iml
 out
 gen### Redis template
