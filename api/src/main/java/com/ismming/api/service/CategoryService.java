@@ -11,10 +11,10 @@ import java.util.List;
 @Service
 public class CategoryService {
 
-    private static final Logger LOGGER = LogManager.getLogger(CategoryService.class.getName());
+    private static final Logger LOG = LogManager.getLogger(CategoryService.class.getName());
 
     public List<Category> getCategories() {
-        LOGGER.info("fuck you");
+        LOG.info("fuck you");
         ArrayList<Category> categories = new ArrayList<>();
         categories.add(new Category("women's store"));
         categories.add(new Category("men's store"));
