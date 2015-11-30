@@ -1,7 +1,7 @@
-api
+ISMMING - API
 =====================
 
-Provide the APIs that client-side needs.
+Provide the APIs for ISMMING FO&BO
 
 Compiling using Maven
 ---------------------

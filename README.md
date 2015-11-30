@@ -1,2 +1,14 @@
-# ismming
-ismming, including three projects, fo, bo and api
+ISMMING
+=====================
+
+### FO
+
+* display all kinds of products
+
+### BO
+
+* manage products, users and so on
+
+### API
+
+* REST API

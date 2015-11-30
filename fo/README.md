@@ -18,41 +18,41 @@ ISMMING - FO
 * buils instead of dist
 * devserver and gruntserver tasks
 
-## Install
+### Install
 
-* first, install npm modules 
+* install npm modules first
 ```
 npm install
 ```
 
-*secondly, install bower components
+* then install bower components
 ```
 bower install
 ```
 
-## Included tasks
+### Included tasks
 
-Build
+* Build
 ```
 grunt build
 ```
 
-tests
+* tests
 ```
 grunt tests
 ```
 
-Dev Server
+* Dev Server
 ```
 grunt devserver
 ```
 
-Build Server
+* Build Server
 ```
 grunt buildserver
 ```
 
-jshint
+* jshint
 ```
 grunt jshint
 ```
