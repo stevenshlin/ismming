@@ -1,5 +1,5 @@
 require.config({
-  hbs:{
+  hbs: {
     disableHelpers: true,
     disableI18n: true,
     templateExtension: 'html'
@@ -65,4 +65,5 @@ require.config({
   }
 });
 
-require(['app'], function(){});
+require(['app'], function () {
+});
