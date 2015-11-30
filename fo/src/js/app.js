@@ -1,8 +1,8 @@
-/*global define */
+/* globals define */
 define(function (require) {
   'use strict';
 
-  var App = (function() {
+  var App = (function () {
 
     // constructor
     function App() {
@@ -18,25 +18,24 @@ define(function (require) {
           '*notFound': 'notFound'
         },
 
-        home: function() {
-          var tpl = require('hbs!../templates/allo');
-          _this.$('.progress-bar').width('100%');
-          setTimeout(function(){
-            _this.$('#main-container').html(tpl());
-          },1000);
+        home: function () {
+          var HomeView = require('../js/HomeView');
+          new HomeView({
+            'el': _this.$('#main-container')
+          }).render();
         },
 
-        notFound: function() {
+        notFound: function () {
           _this.Router.navigate('#/');
         }
 
       }))();
 
-      // hitory backbone start
+      // history backbone start
       this.Backbone.history.start();
     }
 
-    // My Awesome App VERSION
+    // ISMMING-FO VERSION
     App.prototype.VERSION = '0.0.0';
 
     // Backbone
