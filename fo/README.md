@@ -1,11 +1,7 @@
-My Awesome App v0.0.0
+ISMMING - FO
 =====================
 
-Cornelio generator is a flavored version of generator-webapp. Includes different packages and conventions.
-
-### What is different form others?
-
-Cornelio's dependencies:
+### Dependencies:
 
 * bootstrap
 * requirejs
@@ -15,7 +11,7 @@ Cornelio's dependencies:
 * backbone-amd
 * require-handlebars-plugin
 
-Cornelio's conventions:
+### Conventions:
 
 * two spaces indentation
 * src instead of app
@@ -24,20 +20,14 @@ Cornelio's conventions:
 
 ## Install
 
-yeoman
+* first, install npm modules 
 ```
-npm install -g yo
-```
-
-generator-cornelio
-```
-npm install -g generator-cornelio
+npm install
 ```
 
-## Usage
-
+*secondly, install bower components
 ```
-yo cornelio
+bower install
 ```
 
 ## Included tasks

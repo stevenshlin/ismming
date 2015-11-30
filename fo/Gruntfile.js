@@ -1,4 +1,3 @@
-// Generated on 2015-11-29 using generator-cornelio 0.0.9
 'use strict';
 
 module.exports = function (grunt) {
@@ -35,7 +34,7 @@ module.exports = function (grunt) {
     },
     connect: {
       options: {
-        port: 8888,
+        port: 9090,
         livereload: 35729,
         // change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost'
