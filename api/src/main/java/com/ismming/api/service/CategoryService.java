@@ -14,14 +14,11 @@ public class CategoryService {
     private static final Logger LOG = LogManager.getLogger(CategoryService.class.getName());
 
     public List<Category> getCategories() {
-        LOG.info("fuck you");
+        LOG.info("Test LOG");
         ArrayList<Category> categories = new ArrayList<>();
-        categories.add(new Category("women's store"));
-        categories.add(new Category("men's store"));
-        categories.add(new Category("collections"));
-        categories.add(new Category("Marni's world"));
-        categories.add(new Category("anticamera"));
-        categories.add(new Category("store locator"));
+        categories.add(new Category("COLLECTION ONE", "collection one produced by ismming.com"));
+        categories.add(new Category("COLLECTION TWO", "collection two produced by ismming.com"));
+        categories.add(new Category("COLLECTION THREE", "collection three produced by ismming.com"));
         return categories;
     }
 

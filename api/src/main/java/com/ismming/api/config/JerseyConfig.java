@@ -1,6 +1,7 @@
 package com.ismming.api.config;
 
 import com.ismming.api.exception.GenericExceptionMapper;
+import com.ismming.api.filter.CORSResponseFilter;
 import com.ismming.api.filter.NoCacheControlFilter;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -16,6 +17,7 @@ public class JerseyConfig extends ResourceConfig {
         packages("com.ismming.api.resource");
         register(RequestContextFilter.class);
         property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, true);
+        register(CORSResponseFilter.class);
         register(GenericExceptionMapper.class);
         register(JacksonFeature.class);
         register(GenericExceptionMapper.class);

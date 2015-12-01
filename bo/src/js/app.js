@@ -35,7 +35,7 @@ define(function (require) {
       this.Backbone.history.start();
     }
 
-    // ISMMING-FO VERSION
+    // VERSION
     App.prototype.VERSION = '0.0.0';
 
     // Backbone
@@ -46,6 +46,9 @@ define(function (require) {
 
     // jQuery
     App.prototype.$ = require('jquery');
+
+    // Config
+    App.prototype.CONFIG = require('../js/Config');
 
     // return App
     return App;
