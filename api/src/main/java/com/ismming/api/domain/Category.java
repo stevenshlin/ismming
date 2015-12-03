@@ -1,7 +1,6 @@
 
 package com.ismming.api.domain;
 
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
@@ -10,9 +9,7 @@ public class Category implements Serializable {
 
     private static final long serialVersionUID = 9061859279002218532L;
 
-    @NotNull
     private String name;
-    @NotNull
     private String description;
 
     public Category() {

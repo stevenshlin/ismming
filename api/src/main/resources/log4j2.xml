@@ -32,6 +32,16 @@
             <appender-ref ref="error-log" level="error"/>
             <appender-ref ref="console-log" level="debug"/>
         </Logger>
+        <Logger name="org.springframework.security" level="debug" additivity="false">
+            <appender-ref ref="trace-log" level="debug"/>
+            <appender-ref ref="error-log" level="error"/>
+            <appender-ref ref="console-log" level="debug"/>
+        </Logger>
+        <Logger name="org.springframework.jdbc" level="debug" additivity="false">
+            <appender-ref ref="trace-log" level="debug"/>
+            <appender-ref ref="error-log" level="error"/>
+            <appender-ref ref="console-log" level="debug"/>
+        </Logger>
         <Root level="error" additivity="false">
             <AppenderRef ref="console-log"/>
         </Root>
